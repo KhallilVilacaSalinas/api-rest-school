@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -8,11 +9,18 @@ datasource db {
 }
 
 model Product {
-  id            String      @id   @default(uuid())
+  id            String      @id		@default(uuid())
   name          String 
   bar_code      String      @unique
   price         Decimal
   created_at    DateTime    @default(now())
 
   @@map("products")
+}
+
+model Category {
+  id			String		@id		@default(uuid())
+  name			String
+
+  @@map("categories")
 }

@@ -14,13 +14,7 @@ export class ProductController {
         });
 
         console.log(product);
-        
 
         return res.json(product);
     }
-
-    async oi(req: Request, res: Response) {
-        return res.send('foi');
-    }
-
 }
