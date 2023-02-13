@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prismaClient } from "../database/prismaClient";
+import { prismaClient } from "../../Kernel/database/prismaClient";
 
 export class ProductController {
     async save(req: Request, res: Response) {
