@@ -1,18 +1,28 @@
 import { Request, Response } from "express";
-import { prismaClient } from "../../../Kernel/database/prismaClient";
+import { CategoryApplication } from "../Application/CategoryApplication";
+import { InputCategoryStore } from "../Application/Input/InputCategoryStore";
 
 export class CategoryController {
-    async save(req: Request, res: Response) {
-        console.log('controller');
-        
-        const { name } = req.body;
-        
-        const category = await prismaClient.category.create({
-            data: {
-                name,
-            },
-        });
 
-        return res.json(category);
+    private categoryApplication: CategoryApplication;
+
+    constructor() {
+        this.categoryApplication = new CategoryApplication();
+    }
+
+    public async storeAction(req: Request, res: Response) {
+        const { name } = req.body;
+  
+        const output = this.categoryApplication.save(
+            new InputCategoryStore(
+                name
+            )
+        );
+
+        return res.json(output);
+    }
+
+    private getInstance(): CategoryApplication {
+        return new CategoryApplication();
     }
 }

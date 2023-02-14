@@ -7,7 +7,7 @@ export class Kernel {
 
     private app: Express;
 
-    private routes: [ Router ];
+    private routes: Router[];
 
     constructor() {
         this.routeOrchestrator = new RouteOrchestrator();
@@ -18,7 +18,7 @@ export class Kernel {
         this.routes = this.routeOrchestrator.generate()
     }
 
-    public getRoutes(): [ Router ] {
+    public getRoutes(): Router[] {
         return this.routes;
     }
 }

@@ -5,8 +5,6 @@ const categoryRouter = Router();
 
 const category = new CategoryController();
 
-console.log('wfw');
-
-categoryRouter.post('/category/create', category.save);
+categoryRouter.post('/category/create', category.storeAction);
 
 export { categoryRouter };
