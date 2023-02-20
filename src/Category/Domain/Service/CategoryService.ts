@@ -9,23 +9,11 @@ export class CategoryService {
         this.categoryRepository = new CategoryRepository();
     }
 
-    public save(name: string): Category {
-        const category: Promise<Category> = this.categoryRepository.save(
+    public async save(name: string): Promise<Category> {
+        const category = await this.categoryRepository.save(
             new Category(name)
         );
 
-        try {
-            category
-            .then((result: Category) => {
-                return result
-            })
-            .catch((error) => {
-                throw new Error(error);
-            }) 
-        } catch (e) {
-            throw new Error("asd");
-        }
-        
-        return new Category('ascxcvxcv');
+        return new Category(category.getName);
     }
 }

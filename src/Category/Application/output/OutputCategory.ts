@@ -7,10 +7,11 @@ export class OutputCategory {
     constructor(category: Category) {
         this.category = category
     }
+    
 
     public getOutput() : Object {
         return {
-            'category': this.category.jsonSerialize,
+            'category': this.category.jsonSerialize(),
         }
     }
 }

@@ -1,5 +1,5 @@
 import { Category } from "./Category";
 
 export interface ICategory {
-    save(category: Category): any
+    save(category: Category): Promise<Category>
 }
