@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -35,4 +34,13 @@ model ProductCategory {
   category      Category    @relation(fields: [id_category], references: [id])
 
   @@map("products_categories")
+}
+
+model User {
+  id          String        @id     @default(uuid())
+  name        String
+  username    String        @unique
+  password    String        
+
+  @@map("users")
 }
