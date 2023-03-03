@@ -1,3 +1,4 @@
+import { Category } from "../Domain/Entity/Category";
 import { CategoryService } from "../Domain/Service/CategoryService";
 import { InputCategoryStore } from "./Input/InputCategoryStore";
 import { OutputCategory } from "./output/OutputCategory";
@@ -11,7 +12,7 @@ export class CategoryApplication {
     }
 
     public async save(inputCategoryStore: InputCategoryStore) : Promise<OutputCategory> {
-        const category = await this.categoryService.save(inputCategoryStore.name); 
+        const category = await this.categoryService.save(new Category(inputCategoryStore.name)); 
 
         return new OutputCategory(category);
     }

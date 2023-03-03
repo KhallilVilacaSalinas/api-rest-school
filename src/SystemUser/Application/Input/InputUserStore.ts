@@ -1,31 +1,32 @@
-export class inputUserStore {
+"use strict";
+
+export class InputUserStore {
     
-    private _name: string|null;
+    private name: string|null;
 
-    private _username: string|null;
+    private username: string|null;
 
-    private _password: string|null;
+    private password: string|null;
     
     constructor(
         name: string|null,
         username: string|null,
         password: string|null
     ) {
-        this._name = name;
-        this._username = username;
-        this._password = password;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
+    
+    public get getName(): string|null {
+        return this.name;
+    }
+    
+    public get getUsername(): string|null {
+        return this.username;
     }
 
-    
-    
-    /**
-     * get name
-     */
-    public get name(): string {
-        
+    public get getPassword(): string|null {
+        return this.password;
     }
-    
-    
-    
-    
 }

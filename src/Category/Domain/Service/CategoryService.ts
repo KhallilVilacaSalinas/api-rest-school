@@ -9,11 +9,7 @@ export class CategoryService {
         this.categoryRepository = new CategoryRepository();
     }
 
-    public async save(name: string) : Promise<Category> {
-        const category = await this.categoryRepository.save(
-            new Category(name)
-        );
-
-        return new Category(category.getName);
+    public async save(category: Category) : Promise<Category> {
+        return await this.categoryRepository.save(category);
     }
 }

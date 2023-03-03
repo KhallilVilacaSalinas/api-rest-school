@@ -1,4 +1,5 @@
 export class Category{
+    
     private readonly name: string;
 
     constructor(name: string) {

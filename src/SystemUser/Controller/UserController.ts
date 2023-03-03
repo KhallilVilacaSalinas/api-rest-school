@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserApplication } from "../Application/UserApplication";
+import { InputUserStore } from "../Application/Input/InputUserStore";
 
 
 export class UserController {
@@ -14,7 +15,11 @@ export class UserController {
         const { name, username, password } = req.body
 
         const output = await this.userApplication.save(
-            
+            new InputUserStore(
+                name,
+                username,
+                password
+            )
         )
     }
 }

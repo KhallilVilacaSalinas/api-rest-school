@@ -7,5 +7,6 @@
             "connectString": "postgresql://postgres:postgres@localhost:5432/prisma_rocktseat?schema=public",
             "name": "localhost"
         }
-    ]
+    ],
+    "workbench.tree.indent": 15
 }
