@@ -28,15 +28,11 @@ export class UserRepository implements IUser{
             }
         });
 
-        if (row !== null) {
-            throw new Error('Não Encontrado')
-        }
-
         return Promise.resolve(
             new User(
-                row!.name,
-                row!.username,
-                row!.password
+                row?.name ?? null,
+                row?.username ?? '',
+                row?.password ?? ''
             )
         )
     }

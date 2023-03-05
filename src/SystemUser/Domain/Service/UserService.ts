@@ -1,3 +1,4 @@
+import { Cryptography } from "../../../../Kernel/Cryptography/Cryptography";
 import { UserRepository } from "../../Infrastructure/Repository/UserRepository";
 import { User } from "../Entity/User";
 
@@ -14,11 +15,19 @@ export class UserService {
 
         const userAlreadyExists: User = await this.getUserByUsername(user);
 
-        if (!userAlreadyExists) {
-            
+        if (userAlreadyExists.getUsername !== '') {
+            throw new Error('Usuario ja existe')
         }
 
-        return await this.userRepository.save(user); 
+        const password = await Cryptography.hash(user.getPassword);
+
+        return await this.userRepository.save(
+            new User(
+                user.getName,
+                user.getUsername,
+                password
+            )
+        ); 
     }
 
     public async getUserByUsername(user: User) : Promise<User> {
