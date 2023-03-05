@@ -4,9 +4,9 @@ export class InputUserStore {
     
     private readonly name: string|null;
 
-    private readonly username: string|null;
+    private readonly username: string;
 
-    private readonly password: string|null;
+    private readonly password: string;
     
     constructor(
         name: string,

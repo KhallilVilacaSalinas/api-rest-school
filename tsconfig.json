@@ -14,7 +14,7 @@
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"noImplicitAny": true,
-		"strictPropertyInitialization": false
+		//"strictPropertyInitialization": false
 	},
 	"include": ["src/**/*", "Kernel/**/*"],
 	"exclude": ["node_modules", "dist"],
