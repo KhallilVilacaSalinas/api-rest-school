@@ -14,11 +14,7 @@ export class UserRepository implements IUser{
         });
 
         return Promise.resolve(
-            new User(
-                row.name,
-                row.username,
-                row.password
-            )
+            new User(row.name, row.username, row.password)
         )
     }
 }

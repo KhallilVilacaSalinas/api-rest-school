@@ -1,34 +1,34 @@
 
 export class User {
 
-    private name: string;
+    private name: string | null;
 
-    private username: string;
+    private username: string | null;
 
-    private password: string;
+    private password: string | null;
 
     constructor(
-        name: string,
-        username: string,
-        password: string
+        name: string | null,
+        username: string | null,
+        password: string | null
     ) {
-        this.name = name,
-        this.username = username,
-        this.password = password
+        this.name = name;
+        this.username = username;
+        this.password = password;
     }
 
     
-    public get getName() : string {
+    public get getName() : string | null {
         return this.name;
     }
     
     
-    public get getUsername() : string {
+    public get getUsername() : string | null {
         return this.username;
     }
 
     
-    public get getPassword() : string {
+    public get getPassword() : string | null {
         return this.password
     }
 

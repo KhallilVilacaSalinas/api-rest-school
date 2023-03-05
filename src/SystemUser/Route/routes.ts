@@ -1,9 +1,10 @@
 import { Router } from "express";
+import { UserController } from "../Controller/UserController";
 
-const categoryRouter = Router();
+const userRouter = Router();
 
-const category = new ();
+const user = new UserController();
 
-categoryRouter.post('/category/create', category.storeAction);
+userRouter.post('/user/create', user.storeAction);
 
-export { categoryRouter };
+export { userRouter };

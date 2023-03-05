@@ -1,6 +1,7 @@
 import { User } from "../Domain/Entity/User";
 import { UserService } from "../Domain/Service/UserService";
 import { InputUserStore } from "./Input/InputUserStore";
+import {OutputUser} from "./Output/OutputUser";
 
 
 export class UserApplication {
@@ -13,13 +14,9 @@ export class UserApplication {
 
 
     public async save(inputUserStore: InputUserStore) {
-        return this.userService.save(
-            new User(
-                inputUserStore.getName,
-                inputUserStore.getUsername,
-                inputUserStore.getPassword
-            )
-        )
+        return new OutputUser(
+            await this.userService.save(inputUserStore.getUser())
+        );
     }
 
 

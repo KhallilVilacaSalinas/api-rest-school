@@ -12,8 +12,8 @@ export class CategoryApplication {
     }
 
     public async save(inputCategoryStore: InputCategoryStore) : Promise<OutputCategory> {
-        const category = await this.categoryService.save(new Category(inputCategoryStore.name)); 
-
-        return new OutputCategory(category);
+        return new OutputCategory(
+            await this.categoryService.save(new Category(inputCategoryStore.name))
+        );
     }
 }

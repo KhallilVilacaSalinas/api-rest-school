@@ -21,5 +21,8 @@ export class UserController {
                 password
             )
         )
+
+        return res.json(output.getOutput());
+
     }
 }
