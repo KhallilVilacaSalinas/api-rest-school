@@ -1,5 +1,8 @@
+import { UserId } from "./UserId";
 
 export class User {
+
+    private id: UserId;
 
     private name: string | null;
 
@@ -8,18 +11,23 @@ export class User {
     private password: string;
 
     constructor(
+        id: UserId,
         name: string | null,
         username: string,
         password: string
     ) {
+        this.id = id
         this.name = name;
         this.username = username;
         this.password = password;
     }
 
+    public get getId() : UserId {
+        return this.id
+    }
     
     public get getName() : string | null {
-        return this.name ?? '';
+        return this.name;
     }
     
     

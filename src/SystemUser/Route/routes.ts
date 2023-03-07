@@ -1,10 +1,14 @@
 import { Router } from "express";
 import { UserController } from "../Controller/UserController";
+import { AuthController } from "../Controller/AuthController";
 
-const userRouter = Router();
+const systemRouter = Router();
 
 const user = new UserController();
+const auth = new AuthController();
 
-userRouter.post('/user/create', user.storeAction);
 
-export { userRouter };
+systemRouter.post('/api/user/create', user.storeAction);
+systemRouter.post('/api/auth', auth.authAction);
+
+export { systemRouter };

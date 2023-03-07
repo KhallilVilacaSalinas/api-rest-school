@@ -1,4 +1,5 @@
-import express from 'express';
+import "express-async-errors";
+import express, { NextFunction, Request, Response } from 'express';
 import { Kernel } from '../Kernel/Kernel';
 
 const app = express();
@@ -8,6 +9,13 @@ kernel.run();
 
 app.use(express.json());
 app.use(kernel.getRoutes());
+
+app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
+    return res.json({
+        error: true,
+        message: error.message
+    })
+});
 
 
 app.listen(process.env.APP_PORT, () => console.log('Server is running'));

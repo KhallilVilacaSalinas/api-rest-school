@@ -1,8 +1,7 @@
-// noinspection JSObjectNullOrUndefined
-
 import { prismaClient } from "../../../../Kernel/database/prismaClient";
 import { IUser } from "../../Domain/Entity/IUser";
 import { User } from "../../Domain/Entity/User";
+import { UserId } from "../../Domain/Entity/UserId";
 
 export class UserRepository implements IUser{
     
@@ -16,10 +15,14 @@ export class UserRepository implements IUser{
         });
 
         return Promise.resolve(
-            new User(row.name, row.username, row.password)
+            new User(
+                new UserId(row.id),
+                row.name,
+                row.username, 
+                row.password
+            )
         )
     }
-
 
     async getUserByUsername(user: User): Promise<User> {
         const row = await prismaClient.user.findFirst({
@@ -30,6 +33,7 @@ export class UserRepository implements IUser{
 
         return Promise.resolve(
             new User(
+                new UserId(row!.id ?? null),
                 row?.name ?? null,
                 row?.username ?? '',
                 row?.password ?? ''

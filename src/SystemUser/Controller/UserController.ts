@@ -12,10 +12,11 @@ export class UserController {
     }
 
     public storeAction = async (req: Request, res: Response) => {
-        const { name, username, password } = req.body
+        const { id, name, username, password } = req.body
 
         const output = await this.userApplication.save(
             new InputUserStore(
+                id,
                 name,
                 username,
                 password

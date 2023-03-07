@@ -23,6 +23,7 @@ export class UserService {
 
         return await this.userRepository.save(
             new User(
+                user.getId,
                 user.getName,
                 user.getUsername,
                 password
