@@ -30,8 +30,10 @@
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",
+    "@types/stack-trace": "^0.0.30",
     "bcryptjs": "^2.4.3",
     "express-async-errors": "^3.1.1",
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "^9.0.0",
+    "stack-trace": "^1.0.0-pre2"
   }
 }

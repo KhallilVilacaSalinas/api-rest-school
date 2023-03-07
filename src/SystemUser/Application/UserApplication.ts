@@ -13,11 +13,9 @@ export class UserApplication {
     }
 
 
-    public async save(inputUserStore: InputUserStore): Promise<OutputUser> {        
+    public async save(inputUserStore: InputUserStore): Promise<OutputUser> {         
         return new OutputUser(
             await this.userService.save(inputUserStore.getUser())
         );
     }
-
-
 }

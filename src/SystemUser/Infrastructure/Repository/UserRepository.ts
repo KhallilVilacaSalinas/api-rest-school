@@ -6,6 +6,7 @@ import { UserId } from "../../Domain/Entity/UserId";
 export class UserRepository implements IUser{
     
     async save(user: User): Promise<User> {
+
         const row = await prismaClient.user.create({
             data: {
                 'name': user.getName,
