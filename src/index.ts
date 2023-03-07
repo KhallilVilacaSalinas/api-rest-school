@@ -16,11 +16,8 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 
     return res.json({
         error: true,
-        lineNumber: trace[0].getLineNumber(),
-        typeName: trace[0].getTypeName(),
-        functionNumber: trace[0].getFunctionName(),
-        methodName: trace[0].getMethodName(),
-        fileName: trace[0].getFileName(),
+        message: error.message,
+        errors: trace 
     })
 });
 

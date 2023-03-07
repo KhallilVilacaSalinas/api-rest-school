@@ -34,7 +34,7 @@ export class UserRepository implements IUser{
 
         return Promise.resolve(
             new User(
-                new UserId(row!.id ?? null),
+                new UserId(row?.id ?? null),
                 row?.name ?? null,
                 row?.username ?? '',
                 row?.password ?? ''

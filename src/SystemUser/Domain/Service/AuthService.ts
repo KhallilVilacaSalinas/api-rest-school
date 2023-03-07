@@ -17,7 +17,7 @@ export class AuthService {
 
         const userAlreadyExists: User = await this.userService.getUserByUsername(user);
 
-        if (userAlreadyExists.getUsername !== '') {
+        if (!userAlreadyExists.getUsername) {
             throw new Error('User or password incorrect');
         }
 
@@ -31,6 +31,9 @@ export class AuthService {
             subject: userAlreadyExists.getId.getId ?? undefined,
             expiresIn: "20s"
         });
+
+        console.log(token);
+        
 
         return Promise.resolve(token)
     }

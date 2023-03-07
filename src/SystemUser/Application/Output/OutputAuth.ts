@@ -8,7 +8,9 @@ export class OutputAuth {
         this.auth = auth;
     }
 
-    public getOutput() : string {
-        return this.auth;
+    public getOutput() : Object {
+        return {
+            'token': this.auth
+        } 
     }
 }
