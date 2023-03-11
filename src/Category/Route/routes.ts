@@ -1,11 +1,11 @@
 import { Router } from "express";
 import { CategoryController } from "../Controller/CategoryController";
-import { AuthController } from "../../SystemUser/Controller/AuthController";
+import { ensureAuthenticated } from "../../../Kernel/middleware/ensureAuthenticated";
 
 const categoryRouter = Router();
 
 const category = new CategoryController();
 
-categoryRouter.post('/api/category/create', category.storeAction);
+categoryRouter.post('/api/category/create', ensureAuthenticated, category.storeAction);
 
 export { categoryRouter };

@@ -27,9 +27,9 @@ export class AuthService {
             throw new Error('User or password incorrect');
         }
 
-        const token = sign({}, "114b0d0a-8a7e-41d1-a079-78cccf13cbf3", {
+        const token = sign({}, process.env.APP_SECRET as string, {
             subject: userAlreadyExists.getId.getId ?? undefined,
-            expiresIn: "20s"
+            expiresIn: "6h"
         });
 
         console.log(token);

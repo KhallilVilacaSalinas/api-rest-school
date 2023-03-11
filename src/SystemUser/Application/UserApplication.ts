@@ -1,4 +1,3 @@
-import { User } from "../Domain/Entity/User";
 import { UserService } from "../Domain/Service/UserService";
 import { InputUserStore } from "./Input/InputUserStore";
 import {OutputUser} from "./Output/OutputUser";

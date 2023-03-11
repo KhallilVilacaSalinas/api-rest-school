@@ -23,7 +23,7 @@ export class UserController {
             )
         )
 
-        return res.json(output.getOutput());
+        return res.status(201).json(output.getOutput());
 
     }
 }
