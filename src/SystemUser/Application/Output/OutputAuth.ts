@@ -1,5 +1,3 @@
-import { Auth } from "../../Domain/Entity/Auth";
-
 export class OutputAuth {
 
     private auth: string;

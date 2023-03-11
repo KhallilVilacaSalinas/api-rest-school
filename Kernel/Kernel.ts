@@ -1,5 +1,7 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
 import { RouteOrchestrator } from "./Route/RouteOrchestrator";
+import { parse } from 'stack-trace';
+
 
 export class Kernel {
 
@@ -18,4 +20,14 @@ export class Kernel {
     public getRoutes(): Router[] {
         return this.routes;
     }
+
+    public managerError(error: Error, req: Request, res: Response): Response {
+        const trace = parse(error);
+        
+        return res.json({
+            error: true,
+            message: error.message,
+            errors: trace 
+        })
+    };
 }
