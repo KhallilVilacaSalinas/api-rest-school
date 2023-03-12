@@ -32,9 +32,6 @@ export class AuthService {
             expiresIn: "6h"
         });
 
-        console.log(token);
-        
-
         return Promise.resolve(token)
     }
 }

@@ -7,7 +7,7 @@ export class Kernel {
 
     private routeOrchestrator: RouteOrchestrator;
 
-    private routes: Router[];
+    private routes: Router[] = [];
 
     constructor() {
         this.routeOrchestrator = new RouteOrchestrator();
