@@ -1,5 +1,4 @@
 import { compare } from "bcryptjs";
-import { Auth } from "../Entity/Auth";
 import { User } from "../Entity/User";
 import { UserService } from "./UserService";
 import { sign } from "jsonwebtoken";
@@ -15,23 +14,28 @@ export class AuthService {
     public async auth(user: User): Promise<string> {
         user.userValidate();
 
-        const userAlreadyExists: User = await this.userService.getUserByUsername(user);
+        const currentUser: User = await this.userService.getUserByUsername(user);
 
-        if (!userAlreadyExists.getUsername) {
+        this.compareAuthentication(user, currentUser);
+
+        return this.generateToken(currentUser);
+    }
+
+    private async compareAuthentication(user: User, currentUser: User): Promise<boolean> {
+        const passwordMatch = await compare(user.getPassword, currentUser.getPassword);
+        if (!passwordMatch) {
             throw new Error('User or password incorrect');
         }
 
-        const password = await compare(user.getPassword, userAlreadyExists.getPassword);
+        return true;
+    }
 
-        if (!password) {
-            throw new Error('User or password incorrect');
-        }
-
+    private generateToken(user: User): string {
         const token = sign({}, process.env.APP_SECRET as string, {
-            subject: userAlreadyExists.getId.getId ?? undefined,
+            subject: user.getId.getId ?? undefined,
             expiresIn: "6h"
         });
 
-        return Promise.resolve(token)
+        return token;
     }
 }
