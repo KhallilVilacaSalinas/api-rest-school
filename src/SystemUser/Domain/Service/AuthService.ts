@@ -24,7 +24,7 @@ export class AuthService {
     private async compareAuthentication(user: User, currentUser: User): Promise<boolean> {
         const passwordMatch = await compare(user.getPassword, currentUser.getPassword);
         if (!passwordMatch) {
-            throw new Error('User or password incorrect');
+            throw new Error('invalid credentials');
         }
         return true;
     }

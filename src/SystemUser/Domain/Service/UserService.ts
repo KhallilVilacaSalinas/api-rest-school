@@ -6,18 +6,16 @@ export class UserService {
 
     private userRepository: UserRepository
 
-    constructor() {
+    constructor(
+        
+    ) {
         this.userRepository = new UserRepository();
     }
 
     public async save(user: User) : Promise<User> {
         user.userValidate();
 
-        const userAlreadyExists: User = await this.getUserByUsername(user);
-
-        if (userAlreadyExists.getUsername !== '') {
-            throw new Error('Usuario ja existe')
-        }
+        await this.userAlreadyExists(user);
 
         const password = await Cryptography.hash(user.getPassword);
 
@@ -29,6 +27,16 @@ export class UserService {
                 password
             )
         ); 
+    }
+
+    private async userAlreadyExists(user: User) : Promise<boolean> {
+        const currentUser: User = await this.getUserByUsername(user);
+
+        if (currentUser.getUsername === user.getUsername) {
+            throw new Error('user already exists')
+        }
+
+        return true;
     }
 
     public async getUserByUsername(user: User) : Promise<User> {

@@ -1,9 +1,9 @@
 import { prismaClient } from "../../../../Kernel/database/prismaClient";
-import { IUser } from "../../Domain/Entity/IUser";
+import { IUserRepository } from "../../Domain/Repository/IUserRepository";
 import { User } from "../../Domain/Entity/User";
 import { UserId } from "../../Domain/Entity/UserId";
 
-export class UserRepository implements IUser{
+export class UserRepository implements IUserRepository{
     
     async save(user: User): Promise<User> {
 
