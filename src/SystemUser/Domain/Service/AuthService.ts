@@ -16,7 +16,7 @@ export class AuthService {
 
         const currentUser: User = await this.userService.getUserByUsername(user);
 
-        this.compareAuthentication(user, currentUser);
+        await this.compareAuthentication(user, currentUser);
 
         return this.generateToken(currentUser);
     }
@@ -26,7 +26,6 @@ export class AuthService {
         if (!passwordMatch) {
             throw new Error('User or password incorrect');
         }
-
         return true;
     }
 
