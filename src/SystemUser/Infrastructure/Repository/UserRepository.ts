@@ -3,7 +3,7 @@ import { IUserRepository } from "../../Domain/Repository/IUserRepository";
 import { User } from "../../Domain/Entity/User";
 import { UserId } from "../../Domain/Entity/UserId";
 
-export class UserRepository implements IUserRepository{
+export class UserRepository implements IUserRepository {
     
     async save(user: User): Promise<User> {
 
@@ -15,13 +15,11 @@ export class UserRepository implements IUserRepository{
             }
         });
 
-        return Promise.resolve(
-            new User(
-                new UserId(row.id),
-                row.name,
-                row.username, 
-                row.password
-            )
+        return new User(
+            new UserId(row?.id ?? null),
+            row?.name ?? null,
+            row?.username ?? '',
+            row?.password ?? ''
         )
     }
 
@@ -32,13 +30,11 @@ export class UserRepository implements IUserRepository{
             }
         });
 
-        return Promise.resolve(
-            new User(
-                new UserId(row?.id ?? null),
-                row?.name ?? null,
-                row?.username ?? '',
-                row?.password ?? ''
-            )
+        return new User(
+            new UserId(row?.id ?? null),
+            row?.name ?? null,
+            row?.username ?? '',
+            row?.password ?? ''
         )
     }
 }
