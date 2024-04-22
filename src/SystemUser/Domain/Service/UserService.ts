@@ -1,4 +1,5 @@
 import { Cryptography } from "../../../../Kernel/Cryptography/Cryptography";
+import { UnprocessableEntity } from "../../../../Kernel/http/UnprocessableEntity";
 import { UserRepository } from "../../Infrastructure/Repository/UserRepository";
 import { User } from "../Entity/User";
 
@@ -33,7 +34,7 @@ export class UserService {
         const currentUser: User = await this.getUserByUsername(user);
 
         if (currentUser.getUsername === user.getUsername) {
-            throw new Error('user already exists')
+            throw new UnprocessableEntity(['user already exist'])
         }
 
         return true;

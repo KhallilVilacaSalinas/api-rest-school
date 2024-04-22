@@ -10,6 +10,6 @@ kernel.run();
 app.use(express.json());
 app.use(kernel.getRoutes());
 
-app.use((error: Error, req: Request, res: Response, next: NextFunction) => kernel.managerError(error, req, res));
+app.use((error: any, req: Request, res: Response, next: NextFunction) => kernel.managerError(error, req, res));
 
 app.listen(process.env.APP_PORT, () => console.log('Server is running'));

@@ -13,8 +13,6 @@ export class ProductController {
             }
         });
 
-        console.log(product);
-
         return res.json(product);
     }
 
