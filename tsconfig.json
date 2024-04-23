@@ -3,22 +3,21 @@
 		"target": "es2018",
 		"lib": ["es5", "es6", "ES2018", "dom", "dom.iterable"],
 		"experimentalDecorators": true,
-    "sourceMap": true,
+		"outDir": "./dist",
+    	"sourceMap": false,
 		"emitDecoratorMetadata": true,
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"allowJs": true,
-		"outDir": "./dist",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"noImplicitAny": true,
+		"skipLibCheck": true, // Adicione esta linha para ignorar a verificação de bibliotecas
+		"skipDefaultLibCheck": true // Adicione esta linha para ignorar a verificação das bibliotecas padrão
 		//"strictPropertyInitialization": false
 	},
 	"include": ["src/**/*", "Kernel/**/*"],
-	"exclude": ["node_modules", "dist"],
-	"ts-node": {
-		"files": true
-	}
+	"exclude": ["node_modules", "dist"]
 }
