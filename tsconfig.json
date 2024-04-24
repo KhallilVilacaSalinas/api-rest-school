@@ -1,21 +1,20 @@
 {
 	"compilerOptions": {
-		"target": "es2018",
-		"lib": ["es5", "es6", "ES2018", "dom", "dom.iterable"],
+		"target": "es2020",
 		"experimentalDecorators": true,
 		"outDir": "./dist",
     	"sourceMap": false,
 		"emitDecoratorMetadata": true,
-		"module": "commonjs",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"esModuleInterop": true,
+		"noEmit": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
-		"noImplicitAny": true,
-		"skipLibCheck": true, // Adicione esta linha para ignorar a verificação de bibliotecas
-		"skipDefaultLibCheck": true // Adicione esta linha para ignorar a verificação das bibliotecas padrão
+		"noImplicitAny": false,
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true
 		//"strictPropertyInitialization": false
 	},
 	"include": ["src/**/*", "Kernel/**/*"],
