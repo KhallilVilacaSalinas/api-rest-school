@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsx src/index.ts",
+    "start": "npm run migrate && tsx src/index.ts",
     "watch": "tsx watch src/index.ts",
-    "test": "vitest"
+    "test": "cross-env APP_MODE=test npm-run-all migrate:test test:run",
+    "migrate": "prisma migrate dev --schema=./Kernel/prisma/schema.prisma",
+    "migrate:test": "prisma migrate dev --schema=./Kernel/prisma/schema.prisma",
+    "test:run": "vitest"
   },
   "prisma": {
     "schema": "./Kernel/prisma/schema.prisma"
@@ -23,14 +26,12 @@
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.11.18",
     "@types/supertest": "^6.0.2",
-    "babel-jest": "^29.7.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "jest": "^29.7.0",
+    "npm-run-all": "^4.1.5",
     "pg": "^8.8.0",
     "prisma": "^5.12.1",
     "reflect-metadata": "^0.1.13",
-    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.1",
     "tsx": "^3.12.2",
     "typeorm": "^0.3.11",
@@ -39,7 +40,6 @@
   },
   "dependencies": {
     "@prisma/client": "^5.12.1",
-    "@types/jest": "^29.5.12",
     "@types/stack-trace": "^0.0.30",
     "bcryptjs": "^2.4.3",
     "express-async-errors": "^3.1.1",

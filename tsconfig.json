@@ -17,6 +17,6 @@
 		"skipDefaultLibCheck": true
 		//"strictPropertyInitialization": false
 	},
-	"include": ["src/**/*", "Kernel/**/*"],
+	"include": ["src/**/*", "Kernel/**/*", "tests/**/*.ts"],
 	"exclude": ["node_modules", "dist"]
 }

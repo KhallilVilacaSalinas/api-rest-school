@@ -23,7 +23,7 @@ export class UserRepository implements IUserRepository {
         )
     }
 
-    async getUserByUsername(user: User): Promise<User> {
+    async getUserByUsername(user: User): Promise<User> {        
         const row = await prismaClient.user.findFirst({
             where: {
                 username: user.getUsername

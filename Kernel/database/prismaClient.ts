@@ -1,5 +1,21 @@
-import { PrismaClient } from '.prisma/client'; 
+import { PrismaClient } from '@prisma/client'; 
 
-const prismaClient = new PrismaClient();
+let prismaClient: PrismaClient;
+
+prismaClient = new PrismaClient();
+
+if (process.env.APP_MODE === 'test') {
+    console.log('entrou');
+    
+    const prismaTest = new PrismaClient({
+        datasources: {
+            db: {
+                url: process.env.DATABASE_TEST_URL,
+            },
+        },
+    });
+
+    prismaClient = prismaTest;
+}
 
 export { prismaClient };

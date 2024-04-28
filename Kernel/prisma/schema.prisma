@@ -11,7 +11,7 @@ model Product {
   id            String      @id		  @default(uuid())
   name          String 
   bar_code      String      @unique
-  price         Decimal
+  price         Int
   created_at    DateTime    @default(now())
 
   @@map("products")
