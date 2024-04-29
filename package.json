@@ -6,9 +6,9 @@
   "scripts": {
     "start": "npm run migrate && tsx src/index.ts",
     "watch": "tsx watch src/index.ts",
-    "test": "cross-env APP_MODE=test npm-run-all migrate:test test:run",
+    "test": "cross-env APP_MODE=test node -r dotenv/config ./node_modules/.bin/npm-run-all migrate:test test:run",
     "migrate": "prisma migrate dev --schema=./Kernel/prisma/schema.prisma",
-    "migrate:test": "prisma migrate dev --schema=./Kernel/prisma/schema.prisma",
+    "migrate:test": "DATABASE_URL=$DATABASE_TEST_URL prisma migrate reset --schema=./Kernel/prisma/schema.prisma && prisma migrate dev --schema=./Kernel/prisma/schema.prisma",
     "test:run": "vitest"
   },
   "prisma": {
@@ -26,7 +26,7 @@
     "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.11.18",
     "@types/supertest": "^6.0.2",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "npm-run-all": "^4.1.5",
     "pg": "^8.8.0",
