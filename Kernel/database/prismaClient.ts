@@ -4,9 +4,7 @@ let prismaClient: PrismaClient;
 
 prismaClient = new PrismaClient();
 
-if (process.env.APP_MODE === 'test') {
-    console.log('entrou');
-    
+if (process.env.APP_MODE === 'test') {    
     const prismaTest = new PrismaClient({
         datasources: {
             db: {

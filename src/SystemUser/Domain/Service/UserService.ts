@@ -12,9 +12,6 @@ export class UserService {
     }
 
     public async save(user: User) : Promise<User> {
-        console.log(user.jsonSerialize);
-        console.log(process.env.APP_MODE);
-        
         user.userValidate();
 
         await this.userAlreadyExists(user);
