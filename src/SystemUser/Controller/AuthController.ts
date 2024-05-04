@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { AuthApplication } from "../Application/AuthApplication";
 import { InputAuth } from "../Application/Input/InputAuth";
+import { Success } from "../../../Kernel/http/Success";
 
 
 export class AuthController {
@@ -20,7 +21,9 @@ export class AuthController {
                 password
             )
         )
+        
+        const success = new Success(output.getOutput());
 
-        return res.json(output.getOutput());
+        return res.status(200).json(success.render());
     }
 }

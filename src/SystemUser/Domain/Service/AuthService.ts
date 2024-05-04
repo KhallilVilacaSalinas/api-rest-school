@@ -2,6 +2,7 @@ import { compare } from "bcryptjs";
 import { User } from "../Entity/User";
 import { UserService } from "./UserService";
 import { sign } from "jsonwebtoken";
+import { Unauthorized } from "../../../../Kernel/http/Unauthorized";
 
 export class AuthService {
     
@@ -24,7 +25,7 @@ export class AuthService {
     private async compareAuthentication(user: User, currentUser: User): Promise<boolean> {
         const passwordMatch = await compare(user.getPassword, currentUser.getPassword);
         if (!passwordMatch) {
-            throw new Error('invalid credentials');
+            throw new Unauthorized(['invalid credentials']);
         }
         return true;
     }
